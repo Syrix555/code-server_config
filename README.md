@@ -104,7 +104,7 @@ sudo certbot --nginx -d code.my-domain.com
 
 最重要的是我们应该把我们下载好的字体放在哪里，这里也是最麻烦的地方。通过查阅相关资料，我成功获取到了正确的位置。
 
-根据这个回答([text](https://github.com/coder/code-server/issues/1374#issuecomment-1013967529)),我们的字体位置应该放在`/usr/local/lib/code-server/src/browser/pages`，而在 css 中我们应该写的 url 是：`_static/src/browser/pages/your-custom-font.woff2`，这样就能保证我们的字体能够全平台使用。
+根据这个回答([Allow custom fonts](https://github.com/coder/code-server/issues/1374#issuecomment-1013967529)),我们的字体位置应该放在`/usr/local/lib/code-server/src/browser/pages`，而在 css 中我们应该写的 url 是：`_static/src/browser/pages/your-custom-font.woff2`，这样就能保证我们的字体能够全平台使用。
 
 当然当我们更新 code-server 后我们`/usr/lib/code-server`下的自定义内容都会失效，我们就需要重新执行以上的内容，过于繁琐。因此我们可以增加一个 sh 脚本，作为 code-server 服务预启动需要执行的脚本，这样就可以在每次启动前将字体文件放到正确的位置并且注入 css，脚本内容在`apply-custom-css.sh`中。
 
